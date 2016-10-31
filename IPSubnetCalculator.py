@@ -4,12 +4,19 @@ import ipaddress
 
 def subnetcalc(source):
 
-    valid_ips = list(ipaddress.ip_network(source).hosts())
+    try:
+        ip = ipaddress.ip_network(source, strict=True)
+    except ValueError:
+        print("Please enter a valid IP address")
+        return False
 
-    for i in valid_ips:
+
+    ips = list(ip.hosts())
+
+    for i in ips:
         print(i)
 
     return True
 
-source = input(print("Enter an IP address to test such as '192.0.2.0/29':"))
+source = input("Enter an IP address to test such as '192.0.2.0/29':")
 subnetcalc(source)
