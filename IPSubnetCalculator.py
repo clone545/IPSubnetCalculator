@@ -6,8 +6,10 @@ def subnetcalc(source):
 
     valid_ips = list(ipaddress.ip_network(source).hosts())
 
-    for i in range(0, len(valid_ips) -1):
-        print(valid_ips[i])
+    for i in valid_ips:
+        print(i)
+
+    return True
 
 source = input(print("Enter an IP address to test such as '192.0.2.0/29':"))
 subnetcalc(source)
